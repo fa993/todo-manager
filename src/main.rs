@@ -319,7 +319,7 @@ pub fn handle_list(sub_matches: &ArgMatches) -> result::Result<String, String> {
         return Err(String::from("Error in executing statment"));
     }
 
-    let mut ret = String::from("Id\tTodo\tDue On");
+    let mut ret = String::from("Id\tTodo\tDue On\n");
 
     let ret2 = iter
         .unwrap()
