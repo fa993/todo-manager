@@ -248,15 +248,14 @@ pub fn handle_list(sub_matches: &ArgMatches) -> result::Result<String, String> {
     let p3 = sub_matches.is_present("completed");
 
     let mut query =
-        String::from("SELECT id, todo, strftime('%Y/%m/%d at %H:%M', due_on) from task where ");
+        String::from("SELECT id, todo, strftime('%Y/%m/%d at %H:%M', due_on) from task where 1=1 ");
 
     if (!p1 && !p2 && !p3) || (p2) {
-        query += "is_completed = 0 "
+        query += "AND is_completed = 0 "
     } else if p1 {
         //do nothing
-        query += " ";
     } else if p3 {
-        query += "is_completed = 1 "
+        query += "AND is_completed = 1 "
     }
 
     let t1 = sub_matches.value_of("day");
