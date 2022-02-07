@@ -271,7 +271,7 @@ pub fn handle_list(sub_matches: &ArgMatches) -> result::Result<String, String> {
     }
 
     if t4 {
-        query += "AND due_on IS NOT NULL order by due_on desc "
+        query += "AND due_on IS NOT NULL order by due_on asc "
     } else {
         query += "order by id desc ";
     }
