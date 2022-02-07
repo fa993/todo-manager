@@ -319,9 +319,9 @@ pub fn handle_list(sub_matches: &ArgMatches) -> result::Result<String, String> {
         return Err(String::from("Error in executing statment"));
     }
 
-    let mut ret = String::from("Id\tTodo\tDue On\n");
+    // let mut ret = String::from("Id\tTodo\tDue On\n");
 
-    let ret2 = iter
+    let mut ret = iter
         .unwrap()
         .map(|x| {
             let r = x.unwrap();
@@ -333,7 +333,7 @@ pub fn handle_list(sub_matches: &ArgMatches) -> result::Result<String, String> {
         })
         .collect::<String>();
 
-    ret += &ret2[..];
+    // ret += &ret2[..];
 
     if let Ok(f) = conn.prepare("SELECT count(*) from task") {
         stmt = f
