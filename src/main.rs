@@ -254,6 +254,7 @@ pub fn handle_list(sub_matches: &ArgMatches) -> result::Result<String, String> {
         query += "is_completed = 0 "
     } else if p1 {
         //do nothing
+        query += " ";
     } else if p3 {
         query += "is_completed = 1 "
     }
