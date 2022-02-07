@@ -1,6 +1,7 @@
 use clap::{App, AppSettings, Arg, ArgMatches};
 use rusqlite::{Connection, Result};
 use std::result;
+use std::path;
 
 fn main() {
     let matches = App::new("Todo Manager")
@@ -473,7 +474,12 @@ pub fn handle_delete(id: &str) -> result::Result<String, String> {
 }
 
 pub fn get_connection() -> Result<Connection, rusqlite::Error> {
-    return Connection::open("todo.db");
+    let path = if let Some(x) = home::home_dir() {
+        x.join(path::PathBuf::from("todo.db"))
+    } else {
+        path::PathBuf::from("todo.db")
+    };
+    return Connection::open(path);
 }
 
 pub struct IdNameDate {

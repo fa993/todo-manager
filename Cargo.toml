@@ -8,3 +8,4 @@ edition = "2018"
 [dependencies]
 rusqlite = {version = "0.26.3", features = ["bundled"]}
 clap = {version = "3.0.14"}
+home = "0.5.3"
